@@ -1,0 +1,51 @@
+{% comment %} <h2>Новости</h2>
+{% if news %}
+    <ul>
+        {% for new in news %}
+            <li>
+                <h3>{{ new.title }}</h3>
+                <p>{{ new.description }}</p>
+                {% if new.image %}
+                    <img src="{{ new.image.url }}" alt="{{ new.title }}" style="max-width: 300px;">
+                {% endif %}
+                <p><strong>Дата:</strong> {{ new.data_time }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Новостей пока нет.</p>
+{% endif %} {% endcomment %}
+
+<h2 class="my-4">Новости</h2>
+<div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% if news %}
+            {% for new in news %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="card mx-auto" style="width: 18rem;"> <!-- Карточка для каждой новости -->
+                        {% if new.image %}
+                            <img src="{{ new.image.url }}" class="card-img-top" alt="{{ new.title }}" style="max-height: 200px; object-fit: cover;"> <!-- Изображение -->
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ new.title }}</h5> <!-- Заголовок новости -->
+                            <p class="card-text">{{ new.description }}</p> <!-- Описание новости -->
+                            <p class="card-text"><small class="text-muted">Дата: {{ new.data_time }}</small></p> <!-- Дата новости -->
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="carousel-item active">
+                <p>Новостей пока нет.</p>
+            </div>
+        {% endif %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+    </button>
+</div>

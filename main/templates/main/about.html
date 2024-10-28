@@ -1,0 +1,18 @@
+{% extends "main/main.html" %}
+
+{% block about %}
+    {% for i in about %}
+        <div class="card about">
+            <div class="card-body block_title_about">
+                <h5 class="card-title title_about"> {{ i.title }}</h5>
+            </div>
+            <div class="card-body body_about">
+                
+                <p class="card-text text_about">{{ i.description }}</p>
+            </div>
+            <div class="block_img_about">   
+                <img src="{{ i.image }}" class="card-img-top img_about" alt="{{ i.title }}">
+            </div>
+        </div> 
+    {% endfor %} 
+{% endblock %}

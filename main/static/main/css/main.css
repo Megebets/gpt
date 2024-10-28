@@ -1,0 +1,100 @@
+/* .header { background-color: #0A2640 ;
+    display: flex;
+    flex-direction: column;
+    
+    height: 25vh;
+}
+
+.emblema{
+width: 80px;
+border-radius: 50%; */
+
+/* } */
+
+/* .navbar{
+    background-color: #0A2640;
+    /* padding-top: 3vh;
+    margin-right: 5vh;
+    margin-left: 5vh; */
+/* }
+
+.nav-link{
+color: white;
+font-size: 1vw;
+
+} */
+ 
+
+
+/* .description{
+    color: rgb(152, 255, 233);
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items:center;
+    font-size: 3vw
+    
+} */
+
+
+/* Основной стиль для шапки */
+body{
+    background-color: rgb(135, 176, 163);
+}
+
+header {
+    background-color: #0A2640;
+    padding: 10px 0;
+}
+
+/* Стили для эмблемы */
+.emblema {
+    width: 80px;
+    border-radius: 50%;
+}
+
+/* Стили для навигационной панели */
+.navbar-nav .nav-link {
+    white-space: nowrap; /* Запрещает перенос текста на новую строку */
+
+    
+}
+.navbar .navbar-nav .nav-link {
+    color: white ;
+    margin-right: 1rem;
+    
+}
+.navbar .navbar-nav .login-link{
+    color: black;
+}
+.navbar .navbar-nav .login{
+    background-color: white;
+    border-radius: 30px;
+}
+
+.nav-item:hover, .nav-link:hover{
+    color: rgb(255, 14, 14)  !important;
+    font-style:bold;
+    transform: scale(1.05);
+    transition: transform .3s ease;
+}
+
+/* Стили для описания */
+.description {
+    color: rgb(152, 255, 233);
+    text-align: center;
+    margin-top: 10px; /* Дополнительный отступ сверху */
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column; /* Строка навигации становится вертикальной */
+        align-items: center;
+    }
+
+    .description h1, .description h2 {
+        font-size: 1.5rem; /* Уменьшаем размер текста на маленьких экранах */
+    }
+}
+
