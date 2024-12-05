@@ -2,7 +2,8 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 from .models import UserProfile
-from .forms import UserProfileForm  # Предположим, что форма создана отдельно
+from .forms import UserProfileForm
+from django.views.generic.edit import FormView
 
 class UserProfileCreateView(CreateView):
     model = UserProfile
@@ -30,3 +31,12 @@ class UserProfileUpdateView(UpdateView):
 
     def get_object(self):
         return get_object_or_404(UserProfile, user=self.request.user)
+    
+class StepwiseProfileFormView(FormView):
+    template_name = 'profiles/stepwise_form.html'
+    form_class = UserProfileForm
+    success_url = reverse_lazy('profiles:profile_success')
+    def form_valid(self, form):
+        form.save
+        return super().form_valid(form)
+    
