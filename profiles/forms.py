@@ -12,3 +12,10 @@ class UserProfileForm(forms.ModelForm):
             'additional_info': forms.Textarea(attrs={'rows': 3}),
             'spouse_requirements': forms.Textarea(attrs={'rows': 3}),
         }
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
+        exclude = ['user']

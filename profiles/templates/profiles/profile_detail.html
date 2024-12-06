@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h2>Анкета пользователя {{ profile.user.username }}</h2>
-  <p>Полное имя: {{ profile.full_name }}</p>
+  <h1>Ваш профиль</h1>
+  <p>ФИО: {{ profile.full_name }}</p>
   <p>Возраст: {{ profile.age }}</p>
-  <p>Дата рождения: {{ profile.birthdate }}</p>
-  <p>Место рождения: {{ profile.birthplace }}</p>
-  <!-- Добавьте остальные поля профиля -->
-  <a href="{% url 'profile_edit' %}" class="btn btn-primary">Редактировать анкету</a>
+  <p>Телефон: {{ profile.contact_phone }}</p>
+  <a href="{% url 'edit_profile' %}">Редактировать профиль</a>
 {% endblock %}
