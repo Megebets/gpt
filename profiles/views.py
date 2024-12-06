@@ -67,7 +67,7 @@ class EditUserProfileView(UpdateView):
         return self.request.user.userprofile
 
 class SignupView(FormView):
-    template_name = 'auth/signup.html'
+    template_name = 'signup.html'
     form_class = UserCreationForm
     success_url = reverse_lazy('profile_create')
 
@@ -76,7 +76,7 @@ class SignupView(FormView):
         return super().form_valid(form)
     
 class CustomSignupView(CreateView):
-    template_name = 'auth/signup.html'
+    template_name = 'profiles/signup.html'
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
 
