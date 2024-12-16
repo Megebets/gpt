@@ -1,9 +1,12 @@
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 from .models import UserProfile
 from .forms import UserProfileForm
 from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import redirect
+
 
 class UserProfileCreateView(CreateView):
     model = UserProfile
@@ -40,3 +43,12 @@ class StepwiseProfileFormView(FormView):
         form.save
         return super().form_valid(form)
     
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'profiles/register.html', {'form': form})

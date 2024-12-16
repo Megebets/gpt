@@ -9,5 +9,7 @@ def home(request):
 
 def about(request):
     about = About.objects.all()
-    return render(request, 'web_site/about.html', {'about': about})
+    return render(request, 'main/about.html')
+
+    # return render(request, 'web_site/about.html', {'about': about})
 
