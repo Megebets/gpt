@@ -1,0 +1,59 @@
+<!-- templates/profiles/stepwise_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stepwise Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/your_style.css' %}">
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <div class="step">
+            {% for field in form %}
+                <div class="form-group">
+                    <label>{{ field.label }}{% if field.field.required %} *{% endif %}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="error">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" class="prev-step">Previous</button>
+        <button type="button" class="next-step">Next</button>
+        <button type="submit" class="submit-form">Submit</button>
+    </form>
+
+    <script>
+        // JavaScript для управления пошаговой формой
+        $(document).ready(function() {
+            let currentStep = 0;
+            const steps = $('.step');
+
+            function showStep(stepIndex) {
+                steps.hide();
+                $(steps[stepIndex]).show();
+            }
+
+            $('.next-step').click(function() {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
+
+            $('.prev-step').click(function() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+
+            showStep(currentStep);
+        });
+    </script>
+</body>
+</html>

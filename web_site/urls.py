@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from main import views as main_views
+from . import views as main_views
 
 urlpatterns = [
+    path('', main_views.home, name='home'),
+    path('about/', main_views.about, name='about'),
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
     path('content/', include('content.urls')),
-    
-
+    path('profiles/', include('profiles.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
