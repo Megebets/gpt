@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'content',
     'profiles',
     'web_site',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

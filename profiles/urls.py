@@ -1,4 +1,5 @@
-from django.urls import path
+app_name = 'profiles'
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from .views import UserProfileCreateView, UserProfileDetailView, UserProfileUpdateView, StepwiseProfileFormView
 from . import views
@@ -10,4 +11,5 @@ urlpatterns = [
     path('stepwise/', StepwiseProfileFormView.as_view(), name='stepwise_form'),
     path('login/', auth_views.LoginView.as_view(template_name='profiles/login.html'), name='login'),
     path('register/', views.register, name='register'),
+
 ]

@@ -19,11 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views as main_views
+from django.http import HttpResponse
 
 urlpatterns = [
     path('', main_views.home, name='home'),
     path('about/', main_views.about, name='about'),
     path('admin/', admin.site.urls),
     path('content/', include('content.urls')),
-    path('profiles/', include('profiles.urls')),
+    path('profiles/', include('profiles.urls', namespace='profiles')),
+    path('test/', lambda request: HttpResponse('Маршруты работают!')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
